@@ -1,41 +1,40 @@
-﻿namespace Uchinchi_dars_2
+﻿using System;
+
+class Program
 {
-    internal class Program
+    static void Main()
     {
         static void Main(string[] args)
+        double number = 0;
+        bool validNumber = false;
+
+        while (!validNumber)
         {
+            Console.Write("Enter a number: ");
+            string input = Console.ReadLine();
 
-            Console.Write("Enter first number : ");
-            string firstInput = Console.ReadLine();
-            int firstNumber;
-            while (!int.TryParse(firstInput, out firstNumber))
+            if (double.TryParse(input, out number))
             {
-                Console.WriteLine("Please input only number for the first input!");
-                Console.Write("Enter first number : ");
-            }
-
-            Console.Write("Enter second number : ");
-            string secondInput = Console.ReadLine();
-            int secondNumber;
-            while (!int.TryParse(secondInput, out secondNumber))
-            {
-                Console.WriteLine("Please input only number for the second input!");
-                Console.Write("Enter second number : ");
-
-
-            }
-
-            if (firstNumber == secondNumber)
-            {
-                Console.WriteLine((firstNumber + secondNumber) * 3);
+                validNumber = true;
             }
             else
             {
-                Console.WriteLine(firstNumber + secondNumber);
-
+                Console.WriteLine("Invalid input, please try again.");
             }
-            Main(args);
-
         }
+
+        int firstNumber = 0, secondNumber = 1;
+
+        Console.Write(firstNumber + " " + secondNumber + " ");
+
+        for (int i = 2; i < number; i++)
+        {
+            int thirdNumber = firstNumber + secondNumber;
+            Console.Write(thirdNumber + " ");
+            firstNumber = secondNumber;
+            secondNumber = thirdNumber;
+        }
+
+        Console.WriteLine();
     }
 }
