@@ -4,7 +4,6 @@ class Program
 {
     static void Main()
     {
-        static void Main(string[] args)
         double number = 0;
         bool validNumber = false;
 
@@ -23,18 +22,31 @@ class Program
             }
         }
 
-        int firstNumber = 0, secondNumber = 1;
+        bool isPrime = true;
 
-        Console.Write(firstNumber + " " + secondNumber + " ");
-
-        for (int i = 2; i < number; i++)
+        if (number <= 1)
         {
-            int thirdNumber = firstNumber + secondNumber;
-            Console.Write(thirdNumber + " ");
-            firstNumber = secondNumber;
-            secondNumber = thirdNumber;
+            isPrime = false;
+        }
+        else
+        {
+            for (int i = 2; i <= number / 2; i++)
+            {
+                if (number % i == 0)
+                {
+                    isPrime = false;
+                    break;
+                }
+            }
         }
 
-        Console.WriteLine();
+        if (isPrime)
+        {
+            Console.WriteLine(number + " is a prime number.");
+        }
+        else
+        {
+            Console.WriteLine(number + " is not a prime number.");
+        }
     }
 }
